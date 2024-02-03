@@ -12,6 +12,15 @@ Welcome to the Salesforce To-Do Manager with Google Tasks Integration project! T
 
 The initial To-Do Manager project provided a robust task management system within Salesforce. However, it lacked external synchronization, making it challenging for users to manage tasks seamlessly across different platforms. This project addresses that limitation by integrating Salesforce To-Do tasks with Google Tasks, allowing users to access and update their tasks from both environments.
 
+## Project Video
+
+
+
+https://github.com/khushal-ganani/todo-google-tasks-integration/assets/152521234/9425e4c8-9211-44ef-b818-800e48179a6a
+
+
+
+
 ## Key Features
 
 ### 1. Google Tasks API Integration 🌐
@@ -34,6 +43,15 @@ The initial To-Do Manager project provided a robust task management system withi
 
 This streamlined OAuth 2.0 Authorization process ensures a robust and secure connection between Salesforce and Google Tasks API, enabling seamless integration.
 
+Here is the video for the OAuth 2.0 Authorization Setup :-
+
+
+
+https://github.com/khushal-ganani/todo-google-tasks-integration/assets/152521234/44ff857a-4d6f-428a-9682-7af8abf2c5e8
+
+
+
+
 ### 2. JSON Parsing and Wrapper Class 📦
 
 - **GoogleTasksJSON Class:** Developed a robust wrapper class `GoogleTasksJSON` for parsing JSON responses from the Google Tasks API and constructing the JSON request body to make Callout requests, facilitating easy handling of API data.
@@ -41,6 +59,17 @@ This streamlined OAuth 2.0 Authorization process ensures a robust and secure con
 ### 3. Postman Testing and Google App Script Integration 🤖
 
 - **Postman Testing:** Thoroughly tested API calls (POST, PATCH, DELETE) to the Google Tasks API using `Postman`, ensuring the reliability of the integration.
+
+Here is the video for the Testing of different HTTP requests to the Google Tasks API :-
+
+
+
+https://github.com/khushal-ganani/todo-google-tasks-integration/assets/152521234/a9aedb51-238a-41f2-a81b-d918ad72057d
+
+
+
+
+
 - **Google App Script:** Implemented Google App Script code to retrieve Google TaskList IDs, enhancing the overall efficiency of the integration.
 
 [Click Here](https://script.google.com/d/1XSBEPUChsXE0bRTz3FD7MTL6v2R7nPkpJJfSp2xU-So1eIQWEo3IT87E/edit?usp=sharing) to view the Google App Script code to retreive the Google TaskList Id's.
