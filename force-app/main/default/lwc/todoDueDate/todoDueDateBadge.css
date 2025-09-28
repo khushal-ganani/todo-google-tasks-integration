@@ -1,0 +1,5 @@
+.due-date-badge {
+    --slds-c-badge-color-background: #55318a;
+    --slds-c-badge-text-color: white;
+    --slds-c-badge-icon-color-foreground: white;
+}

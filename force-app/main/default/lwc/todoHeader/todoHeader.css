@@ -1,0 +1,26 @@
+:host {
+    --theme-color: #7846C1;
+    --slds-c-button-brand-color-background: var(--theme-color);
+    --slds-c-button-brand-color-background-hover: #55318a;
+    --slds-c-icon-color-foreground-default: var(--theme-color);
+    --slds-c-icon-color-background: white;
+}
+
+.time {
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+.my-custom-text {
+    color: var(--theme-color);
+}
+
+.greeting {
+    font-size: 2rem;
+    font-weight: var(--lwc-fontWeightRegular, 400);
+}
+
+.record-row {
+    display: flex;
+    align-items: last baseline;
+}

@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-grid">
+        <c-todo-filter class="slds-col slds-size_3-of-12 slds-var-m-right_medium"></c-todo-filter>
+        <div class="slds-col slds-size_9-of-12 slds-truncate">
+            <article class="slds-card">
+                <div class="slds-card__body slds-card__body_inner">
+                    <lightning-tabset variant="standard" active-tab-value="cardView">
+                        <lightning-tab label="Card View" value="cardView" title="Card View" icon-name="utility:tile_card_list">
+                            <c-todo-card-list filters={filters}></c-todo-card-list>
+                        </lightning-tab>
+                        <lightning-tab label="Table View" value="tableView" title="Table View" icon-name="utility:table">
+                            <c-custom-todo-datatable filters={filters}></c-custom-todo-datatable>
+                        </lightning-tab>
+                    </lightning-tabset>
+                </div>
+            </article>
+        </div>
+    </div>
+</template>

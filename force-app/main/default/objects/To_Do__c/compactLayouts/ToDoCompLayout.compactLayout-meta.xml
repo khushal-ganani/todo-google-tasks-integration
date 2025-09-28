@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ToDoCompLayout</fullName>
+    <fields>Name</fields>
+    <fields>Type__c</fields>
+    <fields>Priority__c</fields>
+    <fields>Due_Date__c</fields>
+    <fields>Completed__c</fields>
+    <label>ToDoCompLayout</label>
+</CompactLayout>

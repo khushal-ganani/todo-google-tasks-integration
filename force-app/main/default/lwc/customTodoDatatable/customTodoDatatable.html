@@ -1,0 +1,59 @@
+<template>
+    <lightning-card icon-name="utility:task" variant="base">
+        <div slot="title">
+            Todo's
+        </div>
+        <div slot="actions">
+            <lightning-combobox
+                field-level-help="Select how many records should be displayed in one page."
+                message-when-value-missing="Select a page size."
+                options={pageSizeOptions}
+                onchange={handlePageSizeChange} 
+                placeholder="Select page size"
+                variant="label-hidden"
+                style="display: inline-block;"
+                value={pageSize}
+                required
+                class="slds-var-m-horizontal_medium"
+            ></lightning-combobox>
+
+            <lightning-button-icon
+                label="Refresh" 
+                icon-name="utility:refresh"
+                alternative-text="Refresh the data"
+                title="Refresh the data"
+                type="button"
+                variant="neutral"
+                onclick={handleRefresh}
+            ></lightning-button-icon>
+        </div>
+        <div slot="footer">
+            <c-paginator
+                page-number={pageNumber}
+                page-size={pageSize}
+                total-item-count = {totalItemCount}
+                onprevious={handlePreviousPage}
+                onnext={handleNextPage}
+            ></c-paginator>
+        </div>
+        <div style="max-height: 400px;" class="slds-grid">
+            <template lwc:if={isLoading}>
+                <div class="spinner-container-outer" style="height: 300px; width: 100%;">
+                    <lightning-spinner variant="base" size="medium"></lightning-spinner>
+                </div>
+            </template>
+            <template lwc:else>
+                <c-todo-datatable
+                    key-field="Id"
+                    columns={columns}
+                    data={todos}
+                    hide-checkbox-column
+                    draft-vales={draftValues}
+                    onsave = {handleSave}
+                    row-number-offset = {rowOffset}
+                    class="slds-col slds-truncate"
+                ></c-todo-datatable>
+            </template>
+        </div>
+    </lightning-card>
+</template>

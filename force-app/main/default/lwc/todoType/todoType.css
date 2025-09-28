@@ -1,0 +1,11 @@
+:host{
+    --theme-color : #7846C1;
+    --theme-color-dark: #55318a;
+    --theme-color-light: #eee2ff;
+}
+
+.type-badge {
+    --slds-c-badge-color-background: var(--theme-color-light);
+    --slds-c-badge-text-color: var(--theme-color-dark);
+    --slds-c-badge-icon-color-foreground: var(--theme-color-dark)
+}

@@ -1,0 +1,55 @@
+<template>
+    <div class="container-card">
+        <!-- header of the card -->
+        <div class="slds-text-color_inverse slds-text-heading_small slds-align_absolute-center">
+            <lightning-icon 
+                icon-name="utility:task" 
+                alternative-text="Connected" 
+                size="small" 
+                title="large size"
+                variant="inverse"
+                class="slds-var-m-around_medium"
+            ></lightning-icon>
+            To-Do's
+        </div>
+
+        <!-- body of the component with the to-dos displayed using todoCard child component -->
+        <div class="slds-var-p-horizontal_large">
+            <template lwc:if={todos.data}>
+                <template lwc:if={todos.data.records.length}>
+                    <div class="body slds-grid slds-gutters slds-wrap">
+                        <template
+                            for:each={todos.data.records}
+                            for:item="todo"
+                        >
+                            <div class={gridClass} key={todo.Id}>
+                                <div class="todo-card">
+                                    <c-todo-card
+                                        todo={todo}
+                                        class="slds-var-m-bottom_medium"
+                                    >
+                                    </c-todo-card>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="footer slds-text-color_inverse slds-button_text-inverse slds-var-p-bottom_small">
+                        <!-- paginator child component to view next or previous page records -->
+                        <c-paginator
+                            page-number={pageNumber}
+                            page-size={todos.data.pageSize}
+                            total-item-count={todos.data.totalItemCount}
+                            onprevious={handlePreviousPage}
+                            onnext={handleNextPage}
+                        ></c-paginator>
+                    </div>
+                </template>
+                <template lwc:else>
+                    <div class="body error-message">
+                        <p>Oops! No To-Do data found !</p>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </div>
+</template>

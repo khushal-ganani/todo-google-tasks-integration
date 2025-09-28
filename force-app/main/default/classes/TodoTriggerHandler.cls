@@ -45,7 +45,6 @@ public class TodoTriggerHandler extends TriggerHandler {
             GoogleTasksJSON response = GoogleTasksJSON.parse(responseBody);
 
             if (jsonResponse.getStatusCode() == 200) {
-                System.debug('response from Google Tasks API: ' + responseBody);
                 todo.Google_Task_Id__c = response.id;
             } else {
                 System.debug('Error occured in the callout: ' + responseBody);
@@ -54,9 +53,7 @@ public class TodoTriggerHandler extends TriggerHandler {
 
         Database.SaveResult[] saveResult = Database.update(todoList, false);
         for(Database.SaveResult sr : saveResult) {
-            if (sr.isSuccess()) {
-                System.debug('Succesfully updated the Google Task Id field on the insert trigger');
-            } else {
+            if (!sr.isSuccess()) {
                 for (Database.Error err : sr.getErrors()) {
                     System.debug('The following error has occured: ');
                     System.debug(err.getStatusCode() + ': ' + err.getMessage());
@@ -82,9 +79,7 @@ public class TodoTriggerHandler extends TriggerHandler {
             HttpResponse jsonResponse = http.send(request);
             String responseBody = jsonResponse.getBody();
 
-            if (jsonResponse.getStatusCode() == 200) {
-                System.debug('response from Google Tasks API to update Google Task: ' + responseBody);
-            } else {
+            if (jsonResponse.getStatusCode() != 200) {
                 System.debug('Error occured in the callout to update Google Task: ' + responseBody);
             }
         }
@@ -107,11 +102,8 @@ public class TodoTriggerHandler extends TriggerHandler {
             request.setEndpoint('callout:googleTasks/tasks/v1/lists/' + googleTaskDetailsMap.get(googleTaskId) + '/tasks/' + googleTaskId);
 
             HttpResponse jsonResponse = http.send(request);
-            System.debug('Status code from DELETE request to Google Tasks API is: '+jsonResponse.getStatusCode());
 
-            if (jsonResponse.getStatusCode() == 204) {
-                System.debug('successfully deleted Google Task !!');
-            } else {
+            if (jsonResponse.getStatusCode() != 204) {
                 String responseBody = jsonResponse.getBody();
                 System.debug('Error occured in deleting the Google Task in the callout: ');
                 System.debug(responseBody);
@@ -234,4 +226,3 @@ public class TodoTriggerHandler extends TriggerHandler {
         return taskListId;
     }
 }
-

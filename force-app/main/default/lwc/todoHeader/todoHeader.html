@@ -1,0 +1,71 @@
+<template>
+	<lightning-card icon-name="utility:task" variant="base">
+		<div slot="title" class="slds-text-heading_medium">
+			To-do List App
+		</div>
+
+    <!-- Todo manager container-->
+    <lightning-layout class="slds-align_absolute-center slds-text-align_center slds-var-p-around_medium container" multiple-rows="true">
+      <lightning-layout-item size="12">
+        <div class="time my-custom-text">{time}</div>
+      </lightning-layout-item>
+      <lightning-layout-item size="12">
+        <div class="greeting my-custom-text">{greeting}</div>
+      </lightning-layout-item>
+      <lightning-layout-item size="12">
+        <div class="slds-text-heading_large slds-var-m-top_large slds-var-m-bottom_medium my-custom-text">🎯 {quote}</div>
+      </lightning-layout-item>
+
+      <!-- record-edit-form to create to-do data -->
+      <lightning-layout-item 
+        size="12"
+        small-device-size="12" 
+        large-device-size={largePageSize}
+        medium-device-size="10" 
+        class="slds-var-m-top_large"
+      >
+        <lightning-record-edit-form 
+          object-api-name={objectApiName}
+          onsubmit={handleSubmit}
+          onsuccess={handleSuccess}
+          onerror={handleError}
+        >
+          <div class="slds-grid record-row">
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input-field field-name={Name}></lightning-input-field>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input-field field-name={Due_Date}></lightning-input-field>
+            </div>
+          </div>
+          <div class="slds-grid">
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input-field field-name={Priority}></lightning-input-field>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input-field field-name={Type}></lightning-input-field>
+            </div>
+          </div>
+          <div class="slds-grid">
+            <div class="slds-col">
+              <lightning-input-field field-name={Description}></lightning-input-field>
+            </div>
+          </div>
+          <div class="slds-var-m-top_medium">
+            <lightning-button 
+              variant="brand"
+              label="Save To-Do" 
+              title="Save To-Do Task" 
+              type="submit"
+              onclick={handleClick} 
+              stretch="false" 
+              icon-name="utility:add"
+              icon-position="left"
+              class="slds-align_absolute-center slds-var-m-bottom_medium"
+            ></lightning-button>
+          </div>
+        </lightning-record-edit-form>
+      </lightning-layout-item>
+		</lightning-layout>
+	</lightning-card>
+</template>

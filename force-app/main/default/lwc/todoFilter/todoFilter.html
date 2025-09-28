@@ -1,0 +1,80 @@
+<template>
+    <lightning-card title="Filters" icon-name="standard:calibration">
+        <div class="slds-var-m-horizontal_medium">
+            <!-- input to search the to-dos by name -->
+            <lightning-input
+                label="Search To-Do's"
+                type="search"
+                onchange={handleSearchKeyChange}
+            ></lightning-input>
+
+            <!-- combobox for the options to Sort the to-dos -->
+            <lightning-combobox
+                field-level-help="Sort the To-Do's by?"
+                label="Sort by"
+                message-when-value-missing="Please select a value to sort the To-Do's."
+                options={sortByOptions}
+                onchange={handleSortByChange} 
+                placeholder="Select a value to sort To-Do's"
+                value={sortByValue}
+                variant="standard"
+                required
+                class="slds-var-m-bottom_medium"
+            ></lightning-combobox><hr>
+
+            <!-- section to filter to-do's by Priority -->
+            <div class="priority-section">
+                <h1>Priority</h1>
+                <template lwc:if={priorities.data}>
+                    <template
+                        for:each={priorities.data.values}
+                        for:item="priority"
+                    >
+                        <lightning-input
+                            key={priority.value}
+                            label={priority.label}
+                            data-filter="priorities"
+                            data-value={priority.value}
+                            type="checkbox"
+                            checked
+                            onchange={handleCheckboxChange}
+                        ></lightning-input>
+                    </template>
+                </template>
+                <template lwc:elseif={priorities.error}>
+                    <p class="slds-text-align_center">Oops! Error occured while loading Priority field values</p>
+                </template>
+                <template lwc:else>
+                    <p class="slds-text-align_center">Loading Data...</p>
+                </template>
+            </div><hr>
+
+            <!-- section to filter the to-do's by Type -->
+            <div class="type-section">
+                <h1>Type</h1>
+                <template lwc:if={types.data}>
+                    <template
+                        for:each={types.data.values}
+                        for:item="type"
+                    >
+                        <lightning-input
+                            key={type.value}
+                            label={type.label}
+                            data-filter="types"
+                            data-value={type.value}
+                            type="checkbox"
+                            checked
+                            onchange={handleCheckboxChange}
+                        ></lightning-input>
+                    </template>
+                </template>
+                <template lwc:elseif={types.error}>
+                    <p class="slds-text-align_center">Oops! Error occured while loading Type field values</p>
+                </template>
+                <template lwc:else>
+                    <p class="slds-text-align_center">Loading Data...</p>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>

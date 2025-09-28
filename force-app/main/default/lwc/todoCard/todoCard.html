@@ -1,0 +1,59 @@
+<template>
+  <lightning-card variant="base">
+    <template lwc:if={todo}>
+      <div slot="title" class="my-custom-header slds-text-heading_small slds-truncate">
+        {cardTitle}
+      </div>
+
+      <!-- action button to mark or un-mark the to-do as completed -->
+      <div slot="actions">
+        <lightning-button-icon-stateful 
+          alternative-text="To-Do Completed"
+          icon-name="utility:check"
+          onclick={handleCompletion}
+          selected={completedState}
+          size="small"
+          variant="border"
+          selected-variant="brand"
+          class='selected-button'
+        ></lightning-button-icon-stateful>
+      </div>
+
+      <!-- box to display the due date -->
+      <div class="slds-var-p-horizontal_medium body">
+        <div class="slds-box slds-box_x-small slds-var-m-bottom_small slds-text-align_center due-date-box">
+          <lightning-badge 
+              label={dueDate}
+              icon-name="utility:date_time"
+              icon-position="start"
+              class="due-date-badge"
+          ></lightning-badge>
+        </div>
+
+        <!-- description of the todo -->
+        <template lwc:if={description}>
+          <div class="slds-grid">
+            <p title={description} class="my-custom-text slds-col slds-truncate"><b>Description: </b> {description}</p>
+          </div>
+        </template>
+        <template lwc:else>
+          <div class="slds-text-color_destructive slds-text-align_center"><p>❗ No description was provided for this To-Do</p></div>
+        </template>
+      </div>
+
+      <!-- footer to display priority and type of todo using lightning-badge -->
+      <div slot="footer" class="footer">
+        <lightning-badge label={priorityBadgeLabel} style={priorityBadgeColor} class="slds-var-m-around_xx-small"></lightning-badge>
+        <lightning-badge 
+          label={typeBadgeLabel}
+          icon-name={iconName}
+          icon-position="start"
+          class="type-badge slds-var-m-around_xx-small"
+        ></lightning-badge>
+      </div>
+    </template>
+    <template lwc:else>
+      <p>Loading some data...</p>
+    </template>
+  </lightning-card>
+</template>

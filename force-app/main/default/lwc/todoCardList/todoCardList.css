@@ -1,0 +1,40 @@
+:host {
+    --theme-color-dark: #55318a;
+    --theme-color-darker: #1b0837;
+}
+
+.container-card {
+    background: linear-gradient(to top left, #b463d2, #3f2ab2);
+    border-radius: var(--lwc-borderRadiusMedium, 0.25rem);
+    box-shadow: 0 2px 2px 0 var(--theme-color-darker);
+}
+
+.body {
+    min-height: 18rem;
+}
+
+.todo-card {
+    box-shadow: 3px 3px 4px var(--theme-color-darker);
+    transition: all 300ms ease;
+}
+
+.todo-card:hover {
+    transform: scale(1.05);
+    box-shadow: 6px 6px 16px 5px var(--theme-color-darker);
+}
+
+.footer {
+    --slds-c-icon-color-foreground: white;
+    --slds-c-icon-color-foreground-hover: var(--theme-color-darker);
+    --slds-c-button-text-color: white;
+    --slds-c-button-text-color-hover: var(--theme-color-darker);
+}
+
+.error-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgb(254, 114, 114);
+}
