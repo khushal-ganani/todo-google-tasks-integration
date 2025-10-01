@@ -19,6 +19,11 @@
     <description>This permission set is used to access the To-Do Manager application</description>
     <fieldPermissions>
         <editable>true</editable>
+        <field>To_Do__c.Completed_On__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>To_Do__c.Completed__c</field>
         <readable>true</readable>
     </fieldPermissions>

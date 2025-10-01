@@ -50,6 +50,14 @@
 		<name>FlexiPage</name>
 	</types>
 	<types>
+		<members>Todo_Before_Triggered_Flow</members>
+		<name>Flow</name>
+	</types>
+	<types>
+		<members>Todo_Before_Triggered_Flow</members>
+		<name>FlowDefinition</name>
+	</types>
+	<types>
 		<members>customTodoDatatable</members>
 		<members>paginator</members>
 		<members>todoCard</members>
